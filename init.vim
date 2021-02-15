@@ -41,6 +41,9 @@ let g:vimtex_toc_config = {
 " Set Skim the pdf viewer
 let g:vimtex_view_method = 'skim'
 
+" Disable quickfix window
+let g:vimtex_quickfix_mode = 0
+
 " =======================================
 " UltiSnips
 " =======================================
