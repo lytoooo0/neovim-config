@@ -4,10 +4,10 @@
 ```
 call plug#begin()
     Plug 'lervag/vimtex'
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'SirVer/ultisnips'
-    Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+    Plug 'rhysd/vim-grammarous'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'neomake/neomake'
 call plug#end()
 ```
 4. Run `:PlugInstall`
