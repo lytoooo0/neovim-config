@@ -8,6 +8,7 @@ call plug#begin()
     Plug 'rhysd/vim-grammarous'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'neomake/neomake'
+    Plug 'vimwiki/vimwiki'
 call plug#end()
 
 
@@ -21,6 +22,7 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
+" use <tab> for snippets
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
@@ -48,6 +50,8 @@ let g:coc_snippet_next = '<tab>'
       endif
     endfunction
 
+" Extensions
+let g:coc_global_extensions = ['coc-vimtex', 'coc-json', 'coc-texlab', 'coc-sh', 'coc-lists', 'coc-snippets']
 
 " =======================================
 " VimTeX
@@ -73,9 +77,25 @@ let g:vimtex_quickfix_mode = 0
 let g:vimtex_indent_on_ampersands = 0
 
 
-let g:vimtex_compiler_latexmk_engines = 'xelatex'
+let g:vimtex_compiler_latexmk = {
+        \ 'executable' : 'latexmk',
+        \ 'options' : [
+        \   '-xelatex',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+        \ ],
+        \}
 
 
+" =======================================
+" VimWiki
+" =======================================
+set nocompatible
+filetype plugin on
+syntax on
+
+let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/'}] 
 " =======================================
 " Custom Configurations
 " =======================================
@@ -86,3 +106,7 @@ colorscheme peachpuff
 imap jk <Esc>
 
 set noshowcmd
+
+set tabstop=4
+set shiftwidth=4
+set expandtab
