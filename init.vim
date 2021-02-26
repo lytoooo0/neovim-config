@@ -22,6 +22,12 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
+" fsdf
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+
 " use <tab> for snippets
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
@@ -91,11 +97,24 @@ let g:vimtex_compiler_latexmk = {
 " =======================================
 " VimWiki
 " =======================================
+
+
 set nocompatible
 filetype plugin on
 syntax on
 
-let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/'}] 
+let g:vimwiki_list = [{
+        \ 'path': '~/Dropbox/vimwiki/',
+        \ 'diary_sort': 'asc',
+        \ 'auto_tags': 1,
+        \ 'auto_diary_index': 1,
+        \ 'auto_generate_links': 1,
+        \ 'auto_generate_tags': 1,
+        \ 'auto_export':1,
+        \ 'template_path':'~/Dropbox/vimwiki/templates/',
+        \ 'template_default':'def_template',
+        \ 'template_ext':'.html'
+        \ }] 
 " =======================================
 " Custom Configurations
 " =======================================
